@@ -25,7 +25,7 @@ def get_townhall_email(townhall_url,tab_email)
         emails = page2.xpath('//*/section[2]/div/table/tbody//tr[4]/td[2]')
         tab_email << emails.text
     end
-    tab_email
+     return tab_email
 end
 
 get_townhall_email(townhall_url,tab_email)
@@ -36,7 +36,7 @@ def get_townhall_urls(townhall_url, urls)
     url = "http://annuaire-des-mairies.com/" +var
     urls << url
     end
-    puts urls
+    return urls
 end
 
 hash_cities = Hash[tab_cities.zip(tab_email)]
