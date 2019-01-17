@@ -2,25 +2,26 @@ require 'nokogiri'
 require 'open-uri'
 
 page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
-page2 = Nokogiri::HTML(open("http://annuaire-des-mairies.com/95/"))
 
-emails = page2.xpath("//*/section[2]/div/table/tbody/tr[4]/td[2]")
-villes = page.xpath("//*/tr[2]/td/table/tbody/tr/td/p/a")
+city_url = page.xpath('//p/a/@href')
+villes = page.xpath('//p/a')
 
-emails.each do |email|
-    puts email.text #ou n'importe quelle autre opération de ton choix ;)
-    
-  end
+#on cherche les noms des villes
 
- villes.each do |ville|
-    puts ville.text #ou n'importe quelle autre opération de ton choix ;)
-    
-  end
+villes.each do |ville|
+    puts ville.text
+end
 
+townhall_url = ""
+
+city_url.each do |url|
+    puts url.text #ou n'importe quelle autre opération de ton choix ;)
+    townhall_url = url.text
+end
 
 def get_townhall_email(townhall_url)
+    emails = page.xpath('//*/td[2]')
+    puts emails
 end
 
-def get_townhall_urls
-
-end
+get_townhall_email(townhall_url)
