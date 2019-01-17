@@ -7,10 +7,9 @@ city_url = page.xpath('//p/a/@href')
 villes = page.xpath('//p/a')
 
 #on cherche les noms des villes
-tabville = [] #tableau avec les noms des villes
+tab_cities = [] #tableau avec les noms des villes
 villes.each do |ville|
-  # puts ville.text
-  tabville << ville.text
+  tab_cities << ville.text
 end
 
 townhall_url = []
@@ -19,15 +18,17 @@ townhall_url = []
         townhall_url << url.text #ajouter toutes les textes des urls dans le tableau
     end
 
-tab = [] #créer un tableau qui recupère les mails
-def get_townhall_email(townhall_url,tab)
+tab_email = [] #créer un tableau qui recupère les mails
+def get_townhall_email(townhall_url,tab_email)
     townhall_url.each do |var|
         page2 = Nokogiri::HTML(open("http://annuaire-des-mairies.com/"+var))
         emails = page2.xpath('//*/section[2]/div/table/tbody//tr[4]/td[2]')
-        tab << emails.text
+        tab_email << emails.text
     end
-    puts tab
+    tab_email
 end
+
+get_townhall_email(townhall_url,tab_email)
 
 urls = [] #créer un tableau qui récupére les urls
 def get_townhall_urls(townhall_url, urls)
@@ -38,4 +39,12 @@ def get_townhall_urls(townhall_url, urls)
     puts urls
 end
 
-get_townhall_urls(townhall_url,urls)
+hash_cities = Hash[tab_cities.zip(tab_email)]
+array_citiesmail = Array.new
+
+hash_cities.each do |key, value|
+    hash = Hash.new
+        hash[key] = value
+        array_citiesmail << hash
+    end
+puts array_citiesmail
