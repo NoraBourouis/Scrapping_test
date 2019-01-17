@@ -34,7 +34,7 @@ crypto.each do |key, value|
         hash[key] = value
         array_cryp << hash
     end
-print array_cryp
+return array_cryp
 end
 
-puts cryptocurrencies
+cryptocurrencies

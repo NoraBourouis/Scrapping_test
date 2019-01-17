@@ -10,3 +10,4 @@ describe "La méthode get_townhall_urls récupère les urls des pages des villes
     it "trouver l'email d'une ville du Val d'Oise" do
       expect(get_townhall_email("http://annuaire-des-mairies.com/95/amenucourt.html")).to eq("mairie.amenucourt@wanadoo.fr")
     end
+  end
