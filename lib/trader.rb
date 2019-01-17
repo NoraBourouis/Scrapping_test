@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-def crypto
+def cryptocurrencies
 
 page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 
@@ -37,4 +37,4 @@ puts array_cryp
 
 end
 
-crypto
+cryptocurrencies
