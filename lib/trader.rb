@@ -21,5 +21,5 @@ end
 
 crypto = Hash[keyz.zip(valeur.map)]
 
-puts crypto 
+puts crypto
 
