@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-
+def crypto
 
 page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 
@@ -34,3 +34,7 @@ crypto.each do |key, value|
         array_cryp << hash
     end
 puts array_cryp
+
+end
+
+crypto
