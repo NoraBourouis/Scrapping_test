@@ -14,13 +14,12 @@ villes.each do |ville|
 end
 
 townhall_url = []
+ #ajouter toutes les url dans un tableau
+    city_url.each do |url|
+        townhall_url << url.text #ajouter toutes les textes des urls dans le tableau
+    end
 
-city_url.each do |url|
-    #puts url.text #ou n'importe quelle autre opération de ton choix ;)
-    townhall_url << url.text
-end
-
-tab = []
+tab = [] #créer un tableau qui recupère les mails
 def get_townhall_email(townhall_url,tab)
     townhall_url.each do |var|
         page2 = Nokogiri::HTML(open("http://annuaire-des-mairies.com/"+var))
@@ -30,4 +29,13 @@ def get_townhall_email(townhall_url,tab)
     puts tab
 end
 
-get_townhall_email(townhall_url,tab)
+urls = [] #créer un tableau qui récupére les urls
+def get_townhall_urls(townhall_url, urls)
+    townhall_url.each do |var|
+    url = "http://annuaire-des-mairies.com/" +var
+    urls << url
+    end
+    puts urls
+end
+
+get_townhall_urls(townhall_url,urls)
