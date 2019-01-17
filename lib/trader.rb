@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-
+require 'rspec'
 def cryptocurrencies
 
 page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
@@ -26,6 +26,7 @@ end
 crypto = Hash[keyz.zip(valeur.map)]
 array_cryp = []
 
+
 crypto.each { |k,v| v[0] = ""}
 crypto.transform_values!(&:to_f)
 crypto.each do |key, value|
@@ -33,8 +34,7 @@ crypto.each do |key, value|
         hash[key] = value
         array_cryp << hash
     end
-puts array_cryp
-
+print array_cryp
 end
 
-cryptocurrencies
+puts cryptocurrencies

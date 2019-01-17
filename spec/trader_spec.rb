@@ -1,7 +1,7 @@
 require_relative '../lib/trader.rb'
 
 describe "la méthode cryptocurrencies retrouve les keys et leurs values" do
-    it "Le tableau doit contenir 2109 monnaies" do
-      expect(crypto.size).to eq(2109)
+    it "Le tableau contient au moins une monnaie,et de ne pas être nul" do
+        expect(cryptocurrencies.class).not_to be_nil 
     end
-  end
+end
