@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
+#on recupère le les url des deputé avec le lien qu'on a dans get_deputy_urls
 def get_deputy_email(deputy_url)
 	page = Nokogiri::HTML(open(deputy_url))   
 	page.xpath('//div[1]/div[5]/div/div[2]/div[1]/ul[2]/li[1]/ul/li[1]/a').text
